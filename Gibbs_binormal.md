@@ -1,15 +1,8 @@
----
-title: "Gibbs sampler for bivariate normal"
-author: "Chris Hamm"
-date: "`r Sys.Date()`"
-output: 
-  html_document:
-    keep_md: TRUE
----
+# Gibbs sampler for bivariate normal
+Chris Hamm  
+`r Sys.Date()`  
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 A bivariate normal distribution for variables $X$ and $Y$
 
@@ -44,7 +37,8 @@ $$
 
 # Gibbs sampling from a bivariate normal
 # Original code from Xie 2014
-```{r binorm_1}
+
+```r
 set.seed(78632)
 
 rbinormal <- function(n, mu1, mu2, sigma1, sigma2, rho){
@@ -63,17 +57,23 @@ rbinormal <- function(n, mu1, mu2, sigma1, sigma2, rho){
 ```
 
 Examples for 10 samples:
-```{r binorm_2}
+
+```r
 n1 <- 10
 z <- rbinormal(n = n1, mu1 = 0, mu2 = 1, sigma1 = 2, sigma2 = 3, rho = 0.7)
 plot(y = z[, 2], x = z[, 1], pch = 19, xlab = "X", ylab = "Y", cex = 1.25)
 arrows(z[-n1, 1], z[-n1, 2], z[-1, 1], z[-1, 2], length = 0.15, col = "grey")
 ```
 
+![](Gibbs_binormal_files/figure-html/binorm_2-1.png)<!-- -->
+
 Example with 10,000 samples:
-```{r binorm_3}
+
+```r
 z1 <- rbinormal(n = 10000, mu1 = 0, mu2 = 1, sigma1 = 2, sigma2 = 3, rho = 0.7)
 smoothScatter(z1, nbin = 100, las = 1, xlim = c(-10, 10), ylim = c(-10, 10))
 ```
+
+![](Gibbs_binormal_files/figure-html/binorm_3-1.png)<!-- -->
 
 * Initial idea and formulas from Xie 2014. 
