@@ -73,3 +73,5 @@ Example with 10,000 samples:
 z1 <- rbinormal(n = 10000, mu1 = 0, mu2 = 1, sigma1 = 2, sigma2 = 3, rho = 0.7)
 smoothScatter(z1, nbin = 100, las = 1, xlim = c(-10, 10), ylim = c(-10, 10))
 ```
+
+* Initial idea and formulas from Xie 2014. 
